@@ -3,7 +3,7 @@
 #include <KorvoLCD.h>
 #include <KorvoExpander.h>
 #include <TFT_eWidget.h>
-#include "bitmap.h"
+#include "salut_bmp.h"
 
 KorvoExpander expander;
 KorvoLCD tft(320, 240);
