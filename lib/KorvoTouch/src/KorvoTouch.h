@@ -16,7 +16,7 @@ Sources :
 struct Point {
     uint16_t x;
     uint16_t y;
-    uint8_t z; // Supposed to be "pressure" works only a bit
+    uint8_t z; // Supposed to be "pressure" not very reliable
 };
 
 class KorvoTouch {
@@ -26,8 +26,6 @@ class KorvoTouch {
     uint8_t nb_touch;
     Point pt1, pt2;
   private:
-    void _write(int addr, int val);
-    uint8_t* _read(int addr, int len);
     TwoWire *_i2c;
 };
 

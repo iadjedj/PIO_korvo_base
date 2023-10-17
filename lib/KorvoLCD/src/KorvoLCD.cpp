@@ -51,6 +51,7 @@ uint8_t KorvoLCD::getTouchRaw(uint16_t *x, uint16_t *y) {
 }
 
 uint16_t KorvoLCD::getTouchRawZ(void) {
+	// FIXME: Find a better way to handle the refresh process
 	// _touch->refresh();
 
 	if (_touch->nb_touch == 0)

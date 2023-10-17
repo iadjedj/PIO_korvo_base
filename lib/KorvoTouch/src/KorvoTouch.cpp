@@ -3,25 +3,8 @@
 
 static const char* TAG = "KorvoTouch";
 
-void KorvoTouch::_write(int addr, int val) {
-	_i2c->beginTransmission(TT211X_ADDR);
-	_i2c->write(addr);
-	_i2c->write(val);
-
-	_i2c->endTransmission(true);
-	return;
-}
-
-uint8_t* KorvoTouch::_read(int addr, int len) {
-	uint8_t buff[len];
-
-	_i2c->requestFrom(TT211X_ADDR, len);
-	_i2c->readBytes(buff, len);
-	return buff;
-}
-
 void KorvoTouch::refresh() {
-	// Todo: Add reset when no touch
+	// TODO: Add reset when no touch
 	
 	_i2c->beginTransmission(TT211X_ADDR);
 	esp_err_t error = _i2c->endTransmission(true);  // param: true : send a stop bit / false : restart
