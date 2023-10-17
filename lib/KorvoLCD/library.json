@@ -1,0 +1,9 @@
+{
+    "dependencies": [
+        {
+            "owner": "Bodmer",
+            "name":"TFT_eSPI",
+            "frameworks":"arduino"
+        }
+    ]
+}
