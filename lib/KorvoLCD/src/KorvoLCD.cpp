@@ -60,9 +60,23 @@ uint16_t KorvoLCD::getTouchRawZ(void) {
 	return (uint16_t)_touch->pt1.z;
 }
 
+void KorvoLCD::begin(uint8_t tc)
+{
+	ESP_LOGE(TAG, "The .begin() function cannot be used with the KorvoLCD Library !");
+}
+
+void KorvoLCD::init(uint8_t tc)
+{
+	ESP_LOGE(TAG, "The .init() function cannot be used with the KorvoLCD Library !");
+}
+
 void KorvoLCD::init(TwoWire *i2c, KorvoExpander *expander) {
 	_expander = expander;
 	_touch = new KorvoTouch(&Wire);
 	_init_lcd();
 	TFT_eSPI::init();
+}
+
+void KorvoLCD::begin(TwoWire *i2c, KorvoExpander *expander) {
+	init(i2c, expander);
 }

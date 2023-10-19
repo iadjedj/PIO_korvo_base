@@ -20,7 +20,7 @@ uint8_t KorvoExpander::_read(int addr) {
   return ret;
 }
 
-void KorvoExpander::init(TwoWire *i2c) {
+void KorvoExpander::init(TwoWire* i2c) {
   _i2c = i2c;
 
   _write(TCA9554_CONFIGURATION_PORT, 0xFF); // All as Input (default)
