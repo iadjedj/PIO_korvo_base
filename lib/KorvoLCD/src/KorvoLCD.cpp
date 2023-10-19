@@ -1,8 +1,7 @@
 #include "KorvoLCD.h"
 
 KorvoLCD::KorvoLCD(uint16_t width, uint16_t height) : TFT_eSPI(width, height) {}
-
-static const char* TAG = "KorvoLCD";
+KorvoLCD::KorvoLCD() : TFT_eSPI(320, 240) {}
 
 void KorvoLCD::_init_lcd() {
 	// Turn ON Peripheral Power
@@ -60,23 +59,24 @@ uint16_t KorvoLCD::getTouchRawZ(void) {
 	return (uint16_t)_touch->pt1.z;
 }
 
-void KorvoLCD::begin(uint8_t tc)
-{
-	ESP_LOGE(TAG, "The .begin() function cannot be used with the KorvoLCD Library !");
-}
-
-void KorvoLCD::init(uint8_t tc)
-{
-	ESP_LOGE(TAG, "The .init() function cannot be used with the KorvoLCD Library !");
-}
-
-void KorvoLCD::init(TwoWire *i2c, KorvoExpander *expander) {
-	_expander = expander;
+void KorvoLCD::init(KorvoExpander *expander, uint8_t tc) {
+	// Not the cleaniest way to handle Wire
+	// but ensure compatibility with original TFT_eSPI::init()
+	if (!i2cIsInit(0)) {
+		Wire.begin(17, 18);
+		log_i("Calling Wire.begin() because I2C was not previously configured.");
+	}
+	if (expander)
+		_expander = expander;
+	else {
+		_expander = new KorvoExpander();
+		_expander->init(&Wire);
+	}
 	_touch = new KorvoTouch(&Wire);
 	_init_lcd();
 	TFT_eSPI::init();
 }
 
-void KorvoLCD::begin(TwoWire *i2c, KorvoExpander *expander) {
-	init(i2c, expander);
+void KorvoLCD::begin(KorvoExpander *expander, uint8_t tc) {
+	init(expander);
 }

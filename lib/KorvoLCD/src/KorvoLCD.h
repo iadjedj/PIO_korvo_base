@@ -9,11 +9,10 @@
 
 class KorvoLCD : public TFT_eSPI {
     public:
-        void init(uint8_t tc = 0);  // Should not be used with a Korvo Display
-        void begin(uint8_t tc = 0); // Should not be used with a Korvo Display
+        void init(KorvoExpander *expander = NULL, uint8_t tc = 0);  // Should not be used with a Korvo Display
+        void begin(KorvoExpander *expander = NULL, uint8_t tc = 0); // Should not be used with a Korvo Display
 
-        void init(TwoWire *i2c, KorvoExpander *expander);
-        void begin(TwoWire *i2c, KorvoExpander *expander);
+        KorvoLCD();
         KorvoLCD(uint16_t width, uint16_t height);
 
         uint8_t getTouchRaw(uint16_t *x, uint16_t *y);

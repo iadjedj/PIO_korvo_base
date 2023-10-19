@@ -1,8 +1,6 @@
 #include "Wire.h"
 #include "KorvoTouch.h"
 
-static const char *TAG = "KorvoTouch";
-
 void KorvoTouch::refresh()
 {
 	// TODO: Add reset when no touch
@@ -49,5 +47,5 @@ void KorvoTouch::refresh()
 
 KorvoTouch::KorvoTouch(TwoWire *i2c) : _i2c(i2c)
 {
-	ESP_LOGI(TAG, "Initialized!");
+	log_i("KorvoTouch initialized!");
 }
