@@ -17,14 +17,17 @@ https://www.ti.com/lit/ds/symlink/tca9554a.pdf
 #define TCA9554_POLARITY_INVERSION_PORT 0x02
 #define TCA9554_CONFIGURATION_PORT      0x03
 
-#define PIN_PA_CTRL   0 // Power Amplifier (Sound) ON/OFF
-#define PIN_LCD_CTRL  1
-#define PIN_LCD_RST   2
-#define PIN_LCD_CS    3
-#define PIN_TP_INT    4
-#define PIN_PERI_PWR  5 // Alim LCD + Camera
-#define PIN_RED_LED   6
-#define PIN_BLUE_LED  7
+typedef enum {
+  PIN_PA_CTRL = 0,// Power Amplifier (Sound) ON/OFF
+  PIN_LCD_CTRL,
+  PIN_LCD_RST,
+  PIN_LCD_CS,
+  PIN_TP_INT,
+  PIN_PERI_PWR, // Alim LCD + Camera
+  PIN_RED_LED,
+  PIN_BLUE_LED
+} expander_pin_t;
+
 
 typedef enum {
     EXPANDER_INPUT,
@@ -38,11 +41,13 @@ typedef enum {
 
 class KorvoExpander {
   public:
-    void init(TwoWire *i2c);
-    void set_direction(int pin, expander_dir_t direction);
-    void set_pin(int pin, expander_state_t state);
-    // expander_state_t read_pin(int pin);
+    KorvoExpander();
+    void init();
+    void set_direction(expander_pin_t pin, expander_dir_t direction);
+    void set_pin(expander_pin_t pin, expander_state_t state);
+    // expander_state_t read_pin(expander_pin_t pin);
   private:
+    static bool _init;
     void _write(int addr, int val);
     uint8_t _read(int addr);
     TwoWire *_i2c;

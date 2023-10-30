@@ -1,8 +1,6 @@
 #include "Wire.h"
 #include "KorvoTouch.h"
 
-static const char *TAG = "KorvoTouch";
-
 void KorvoTouch::refresh()
 {
 	// TODO: Add reset when no touch
@@ -19,6 +17,10 @@ void KorvoTouch::refresh()
 		_i2c->readBytes(buff, bytesReceived);
 
 		uint16_t to_read = buff[0] + (buff[1] << 8);
+		if (to_read == 0) {
+			log_w("Got 0 available bytes from Touch Controller");
+			return ;
+		}
 
 		_i2c->requestFrom(TT211X_ADDR, to_read);
 
@@ -31,6 +33,7 @@ void KorvoTouch::refresh()
 
 		// Can be written in a better way
 		nb_touch = to_read / 10;
+
 
 		if (nb_touch > 0)
 		{
@@ -49,5 +52,5 @@ void KorvoTouch::refresh()
 
 KorvoTouch::KorvoTouch(TwoWire *i2c) : _i2c(i2c)
 {
-	ESP_LOGI(TAG, "Initialized!");
+	log_i("KorvoTouch initialized!");
 }

@@ -14,9 +14,9 @@ Sources :
 #define TT211X_ADDR 0x24
 
 struct Point {
-    uint16_t x;
-    uint16_t y;
-    uint8_t z; // Supposed to be "pressure" not very reliable
+    uint16_t x; // x coordinate (in px)
+    uint16_t y; // y coordinate (in px)
+    uint8_t z; // Pressure? Size of point? 
 };
 
 class KorvoTouch {

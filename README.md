@@ -2,7 +2,7 @@
 
 Base project for PlatformIO using the ESP32S3 Korvo 2 board
 
-# Useful links:
+# Useful links
 
 - **Korvo Board**:
 	- Main Board:
@@ -14,6 +14,7 @@ Base project for PlatformIO using the ESP32S3 Korvo 2 board
 	
 - **Frameworks**
 	- [GitHub : Arduino ESP32 Framework](https://github.com/espressif/arduino-esp32)
+	- [Documentation : esp-idf for ESP32S3](https://docs.espressif.com/projects/esp-idf/en/latest/esp32s3/index.html)
 	- [GitHub : esp-idf](https://github.com/espressif/esp-idf/)
 - **Librairies**
 	- [TFT_eSPI](https://github.com/Bodmer/TFT_eSPI/) 

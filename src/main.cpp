@@ -1,22 +1,13 @@
 #include "Arduino.h"
-#include "Wire.h"
 
 #include <KorvoLCD.h>
-#include <KorvoExpander.h>
-
-static const char* TAG = "Main";
 
 KorvoLCD      tft(320, 240);
-KorvoExpander expander;
 
 void setup() {
 	Serial.begin(115200);
 
-	Wire.begin(17, 18);
-
-	expander.init(&Wire);
-
-	tft.init(&Wire, &expander);
+	tft.init();
 	tft.setRotation(4);
 	tft.fillScreen(TFT_BLACK);
 
