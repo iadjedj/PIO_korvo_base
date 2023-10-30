@@ -63,14 +63,14 @@ void KorvoLCD::init(KorvoExpander *expander, uint8_t tc) {
 	// Not the cleaniest way to handle Wire
 	// but ensure compatibility with original TFT_eSPI::init()
 	if (!i2cIsInit(0)) {
-		Wire.begin(17, 18);
 		log_i("Calling Wire.begin() because I2C was not previously configured.");
+		Wire.begin(17, 18);
 	}
 	if (expander)
 		_expander = expander;
 	else {
 		_expander = new KorvoExpander();
-		_expander->init(&Wire);
+		_expander->init();
 	}
 	_touch = new KorvoTouch(&Wire);
 	_init_lcd();
