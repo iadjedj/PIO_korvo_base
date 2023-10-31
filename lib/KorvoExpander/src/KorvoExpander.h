@@ -19,7 +19,7 @@ https://www.ti.com/lit/ds/symlink/tca9554a.pdf
 
 typedef enum {
   PIN_PA_CTRL = 0,// Power Amplifier (Sound) ON/OFF
-  PIN_LCD_CTRL,
+  PIN_LCD_CTRL, // Connected to EN pin of the Backlight power regulator
   PIN_LCD_RST,
   PIN_LCD_CS,
   PIN_TP_INT,

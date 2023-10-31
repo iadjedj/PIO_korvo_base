@@ -8,7 +8,7 @@ void KorvoLCD::_init_lcd() {
 	_expander->set_direction(PIN_PERI_PWR, EXPANDER_OUTPUT);
 	_expander->set_pin(PIN_PERI_PWR, EXPANDER_LOW); // PERI_PWR_ON	=	L，	PER_VCC_3V3	= ON
 
-	// ?
+	// Turn on Backlight
 	_expander->set_direction(PIN_LCD_CTRL, EXPANDER_OUTPUT);
 	_expander->set_pin(PIN_LCD_CTRL, EXPANDER_HIGH);
 
