@@ -28,6 +28,7 @@ Base project for PlatformIO using the ESP32S3 Korvo 2 board
 		|__ build/
 		|__ libdeps/
 	|__ .vscode/
+		|__ extensions.json
 	|__ include/
 	|__ boards/
 		|__ korvo_board.json
